@@ -42,7 +42,7 @@ npx playwright install
 ### 4️⃣ Run Tests
 #### Run all tests:
 ```sh
-npm test  ("npx bddgen && npx playwright test --ui")
+npm test
 ```
 
 ## 📊 Test Reports
