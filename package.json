@@ -1,0 +1,23 @@
+{
+  "name": "playwright-bdd-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx bddgen && npx playwright test --ui"
+  },
+  "keywords": [],
+  "author": "Piotr Sewerynek",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.9",
+    "allure-playwright": "^3.2.0",
+    "playwright-bdd": "^8.2.1",
+    "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
