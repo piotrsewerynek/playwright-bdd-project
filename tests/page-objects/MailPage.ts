@@ -1,4 +1,4 @@
-import { expect, FrameLocator, Page } from '@playwright/test';
+import {expect, FrameLocator, Page} from '@playwright/test';
 
 export class MailPage {
     readonly page: Page;
@@ -7,7 +7,8 @@ export class MailPage {
     readonly searchInput = '#search';
     readonly goButton = 'button:text-is("GO")';
     readonly emptyMailbox = '#inbox_specified';
-    readonly emailInMailbox = 'tr[ng-repeat="email in emails"]';
+    readonly emailInMailbox = 'tr';
+    readonly subscriptionConfirmation = 'Potwierdzenie subskrypcji';
 
     constructor(page: Page) {
         this.page = page;
@@ -28,8 +29,8 @@ export class MailPage {
     async waitAndClickOnMail(containText: string, retryThreshold = 10,): Promise<boolean> {
         for (let attempt = 0; attempt <= retryThreshold; attempt++) {
             try {
-                await expect(this.page.locator(this.emailInMailbox)).toContainText(containText, {timeout: 5_000});
-                await this.page.locator(this.emailInMailbox).filter({ hasText: containText }).click();
+                await expect(this.page.getByRole('cell', {name: this.subscriptionConfirmation})).toBeVisible({timeout: 10_000});
+                await this.page.locator(this.emailInMailbox).filter({hasText: containText}).click();
                 break;
             } catch (error) {
                 if (attempt < retryThreshold) {
@@ -42,7 +43,7 @@ export class MailPage {
 
     async clickOnActivationLink(pageAddress: string): Promise<Page> {
         const newTab = this.page.waitForEvent('popup');
-        await this.frame.getByRole('link', { name: pageAddress }).click();
+        await this.frame.getByRole('link', {name: pageAddress}).click();
         return newTab
     }
 

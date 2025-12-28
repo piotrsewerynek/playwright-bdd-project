@@ -3,8 +3,8 @@ import { expect, Page } from '@playwright/test';
 
 export class HomePage {
     readonly page: Page;
-    readonly cookieBanner = 'div[class="cookie-message"]';
-    readonly acceptCookiesButton = 'a[href="/users/accept_cookies"]';
+    readonly cookieBanner = '#CybotCookiebotDialog';
+    readonly acceptCookiesButton = '#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll';
     readonly mailField = '#SubscriberEmail';
     readonly termsCheckbox = '#SubscriberHomeForm';
     readonly signupButton = 'input[class="btn"]';
